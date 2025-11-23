@@ -75,8 +75,11 @@ jobs:
           cat package.json | jq '{name, version, main, module, files}'
         working-directory: ./package/bun-otel
 
-      - name: Publish to npm with bun publish
-        run: bun publish --access public --tolerate-republish
+      - name: Install npm globally
+        run: npm install -g npm@latest
+
+      - name: Publish to npm with npm publish
+        run: npm publish --access public --tolerate-republish
         working-directory: ./package/bun-otel
         # env:
         # NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
