@@ -18,9 +18,10 @@
     "setup": "bun run setup.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest",
     "@eslint/js": "^9.15.0",
+    "@types/bun": "latest",
     "@types/eslint__js": "^8.42.3",
+    "changelogen": "^0.6.2",
     "eslint": "^9.15.0",
     "prettier": "^3.3.3",
     "typescript-eslint": "^8.14.0"
