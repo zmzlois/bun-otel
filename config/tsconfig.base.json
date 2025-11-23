@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/lib",
+    "**/.turbo",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ],
+  "compilerOptions": {
+    // Project structure
+    "composite": true,
+    "incremental": true,
+
+    // Language and environment
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+
+    // Module handling
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+
+    // Emit
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    // Type checking - strict
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+
+    // Best practices
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": false,
+
+    // Bun specific
+    "types": ["bun-types"],
+    "allowJs": true,
+    "checkJs": false
+  }
+}
