@@ -4,12 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "bun run index.ts",
-    "lint": "tsc --noEmit"
+    "lint": "eslint . -c ../../config/eslint.config.js --max-warnings 0",
+    "lint:fix": "eslint . -c ../../config/eslint.config.js --fix",
+    "format": "prettier --write . --config ../../config/.prettierrc.json",
+    "format:check": "prettier --check . --config ../../config/.prettierrc.json",
+    "typecheck": "tsc --noEmit"
   },
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+  "dependencies": {
+    "bun-otel": "workspace:*"
   }
 }
