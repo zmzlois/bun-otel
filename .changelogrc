@@ -4,18 +4,42 @@
     "repo": "zmzlois/bun-otel"
   },
   "types": {
-    "feat": { "title": "🚀 Features" },
-    "fix": { "title": "🐛 Bug Fixes" },
-    "perf": { "title": "⚡ Performance" },
-    "refactor": { "title": "🔨 Refactors" },
-    "docs": { "title": "📚 Documentation" },
-    "build": { "title": "📦 Build" },
-    "test": { "title": "🧪 Tests" },
-    "chore": { "title": "🏡 Chore" },
-    "ci": { "title": "🤖 CI" },
-    "style": { "title": "💄 Style" },
-    "revert": { "title": "⏪ Reverts" },
-    "security": { "title": "🔒 Security" }
+    "feat": {
+      "title": "🚀 Features"
+    },
+    "fix": {
+      "title": "🐛 Bug Fixes"
+    },
+    "perf": {
+      "title": "⚡ Performance"
+    },
+    "refactor": {
+      "title": "🔨 Refactors"
+    },
+    "docs": {
+      "title": "📚 Documentation"
+    },
+    "build": {
+      "title": "📦 Build"
+    },
+    "test": {
+      "title": "🧪 Tests"
+    },
+    "chore": {
+      "title": "🏡 Chore"
+    },
+    "ci": {
+      "title": "🤖 CI"
+    },
+    "style": {
+      "title": "💄 Style"
+    },
+    "revert": {
+      "title": "⏪ Reverts"
+    },
+    "security": {
+      "title": "🔒 Security"
+    }
   },
   "excludeAuthors": [
     "dependabot[bot]",
