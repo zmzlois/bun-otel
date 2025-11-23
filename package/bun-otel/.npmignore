@@ -1,0 +1,44 @@
+# Source files (not needed since we ship dist/)
+src/
+
+# Build artifacts
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+.turbo
+
+# Build and config scripts
+build.ts
+tsconfig.json
+eslint.config.js
+
+# Tests
+*.test.ts
+*.spec.ts
+test*.ts
+__tests__/
+coverage/
+
+# Documentation build
+docs/
+
+# Development files
+.env
+.env.*
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
