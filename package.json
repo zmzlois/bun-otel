@@ -1,0 +1,25 @@
+{
+  "name": "bun-otel",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "bun-types": "latest",
+    "@opentelemetry/api": "latest",
+    "@opentelemetry/sdk-node": "latest",
+    "@opentelemetry/sdk-trace-node": "latest",
+    "@opentelemetry/exporter-otlp-http": "latest",
+    "@opentelemetry/sdk-metrics": "latest",
+    "@opentelemetry/auto-instrumentations-node": "latest",
+    "@opentelemetry/exporter-trace-otlp-proto": "latest",
+    "@opentelemetry/semantic-conventions": "latest"
+  },
+  "author": {
+    "name": "zmzlois",
+    "email": "lois@normal-people.com",
+    "url": "https://normal-people.com"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
