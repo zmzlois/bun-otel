@@ -4,14 +4,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
-    "lint": "tsc --noEmit"
+    "lint": "eslint . -c ../../config/eslint.config.js --max-warnings 0",
+    "lint:fix": "eslint . -c ../../config/eslint.config.js --fix",
+    "format": "prettier --write . --config ../../config/.prettierrc.json",
+    "format:check": "prettier --check . --config ../../config/.prettierrc.json",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "elysia": "latest",
     "bun-otel": "workspace:*"
-  },
-  "devDependencies": {
-    "bun-types": "latest"
   },
   "module": "src/index.js"
 }

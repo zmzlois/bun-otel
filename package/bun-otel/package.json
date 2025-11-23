@@ -1,0 +1,59 @@
+{
+  "name": "bun-otel",
+  "version": "0.0.1",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "bun run build.ts",
+    "dev": "bun run index.ts --watch",
+    "test": "bun test",
+    "test:otel": "bun run test.ts",
+    "test:complete": "bun run test-complete.ts",
+    "test:correlation": "bun run test-correlation.ts",
+    "test:verify": "bun run verify-endpoints.ts",
+    "lint": "eslint . -c ../../config/eslint.config.js --max-warnings 5",
+    "lint:fix": "eslint . -c ../../config/eslint.config.js --fix",
+    "format": "prettier --write . --config ../../config/.prettierrc.json",
+    "format:check": "prettier --check . --config ../../config/.prettierrc.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "latest",
+    "@opentelemetry/sdk-node": "latest",
+    "@opentelemetry/sdk-trace-node": "latest",
+    "@opentelemetry/exporter-otlp-http": "latest",
+    "@opentelemetry/exporter-trace-otlp-http": "latest",
+    "@opentelemetry/exporter-metrics-otlp-http": "latest",
+    "@opentelemetry/sdk-metrics": "latest",
+    "@opentelemetry/auto-instrumentations-node": "latest",
+    "@opentelemetry/exporter-trace-otlp-proto": "latest",
+    "@opentelemetry/semantic-conventions": "latest",
+    "@opentelemetry/instrumentation-redis": "latest",
+    "@opentelemetry/resources": "latest"
+  },
+  "author": {
+    "name": "zmzlois",
+    "email": "lois@normal-people.com",
+    "url": "https://normal-people.com"
+  }
+}

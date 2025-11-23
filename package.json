@@ -5,15 +5,25 @@
   "type": "module",
   "scripts": {
     "dev": "bun run --filter '*' dev",
-    "build": "bun run --filter 'packages/*' build",
+    "build": "bun run --filter 'bun-otel*' build",
     "test": "bun test",
-    "lint": "bun run --filter '*' lint",
+    "lint": "eslint . -c config/eslint.config.js --max-warnings 10",
+    "lint:fix": "eslint . -c config/eslint.config.js --fix",
+    "format": "prettier --write . --config config/.prettierrc.json",
+    "format:check": "prettier --check . --config config/.prettierrc.json",
+    "typecheck": "tsc --build config/tsconfig.json",
+    "check": "bun run typecheck && bun run lint && bun run format:check",
     "bun-server": "bun run --filter bun-server dev",
     "elysia": "bun run --filter elysia dev",
     "setup": "bun run setup.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@eslint/js": "^9.15.0",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^9.15.0",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.14.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
