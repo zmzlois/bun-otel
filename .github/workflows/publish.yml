@@ -17,8 +17,7 @@ jobs:
     # Allow both tag pushes AND manual workflow dispatch
     if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
     permissions:
-      contents: write
-      id-token: write # Required for npm provenance and OIDC
+      contents: write # Required for creating GitHub releases
 
     steps:
       - name: Checkout code
@@ -80,7 +79,7 @@ jobs:
         run: bun publish --access public --tolerate-republish
         working-directory: ./package/bun-otel
         # env:
-        #   NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
+        # NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get package version
         id: package-version
