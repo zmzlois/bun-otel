@@ -3,7 +3,9 @@ import { OpenTelemetryClient } from "bun-otel";
 
 const client = new OpenTelemetryClient();
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3002);
+const app = new Elysia()
+  .get("/", () => "Hello Elysia")
+  .listen(process.env.ELYSIA_PORT ?? 3002);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
