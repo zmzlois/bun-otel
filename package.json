@@ -4,6 +4,7 @@
   "module": "packages/index.ts",
   "type": "module",
   "scripts": {
+    "setup": "bun run setup.ts",
     "dev": "bun run --filter '*' dev",
     "build": "bun run --filter 'bun-otel*' build",
     "test": "bun test",
@@ -14,8 +15,7 @@
     "typecheck": "tsc --build config/tsconfig.json",
     "check": "bun run typecheck && bun run lint && bun run format:check",
     "bun-server": "bun run --filter bun-server dev",
-    "elysia": "bun run --filter elysia dev",
-    "setup": "bun run setup.ts"
+    "elysia": "bun run --filter elysia dev"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
