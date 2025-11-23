@@ -69,9 +69,7 @@ export class OpenTelemetryClient {
    */
   public init(config?: OpenTelemetryConfig): void {
     if (this.isInitialized) {
-      debug.warn(
-        "OpenTelemetry SDK is already initialized. Skipping re-initialization.",
-      );
+      debug.warn("OpenTelemetry SDK is already initialized. Skipping re-initialization.");
       return;
     }
 
@@ -89,8 +87,7 @@ export class OpenTelemetryClient {
       JAEGER_HTTP_ENDPOINT,
     } = process.env;
 
-    const serviceName =
-      config?.serviceName || SERVICE_NAME || "unknown-service";
+    const serviceName = config?.serviceName || SERVICE_NAME || "unknown-service";
     const environment = config?.environment || ENV || "unknown";
     const version = config?.version || APP_VERSION || "unknown";
     const ddApiKey = config?.ddApiKey || DD_API_KEY;
@@ -102,8 +99,7 @@ export class OpenTelemetryClient {
       ["true", "1"].includes((DISABLE_DATADOG || "").toLowerCase().trim());
 
     const useJaeger =
-      config?.useJaeger ??
-      (ENV === "local" || NODE_ENV === "development" || USE_JAEGER === "true");
+      config?.useJaeger ?? (ENV === "local" || NODE_ENV === "development" || USE_JAEGER === "true");
 
     const jaegerEndpoint =
       config?.jaegerEndpoint || JAEGER_HTTP_ENDPOINT || "http://localhost:4318";
@@ -115,9 +111,7 @@ export class OpenTelemetryClient {
     if (enableDiagnostics) {
       const level = config?.diagnosticLevel || DiagLogLevel.INFO;
       diag.setLogger(new DiagConsoleLogger(), level);
-      debug.info(
-        `🔍 OpenTelemetry diagnostics enabled (level: ${DiagLogLevel[level]})`,
-      );
+      debug.info(`🔍 OpenTelemetry diagnostics enabled (level: ${DiagLogLevel[level]})`);
     }
 
     // Check if disabled
@@ -132,7 +126,7 @@ export class OpenTelemetryClient {
       throw new Error(
         "DD_API_KEY is required when using Datadog. " +
           "Set DD_API_KEY environment variable or pass ddApiKey in config. " +
-          `Current working directory: ${process.cwd()}`,
+          `Current working directory: ${process.cwd()}`
       );
     }
 
@@ -173,7 +167,7 @@ export class OpenTelemetryClient {
           environment: environment,
           "node.env": NODE_ENV || "unknown",
           "service.version": version,
-        }),
+        })
       );
 
       // Initialize OpenTelemetry SDK

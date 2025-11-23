@@ -12,13 +12,6 @@
     "noEmit": true
   },
   "include": [],
-  "exclude": [
-    "**/node_modules",
-    "**/dist",
-    "**/lib"
-  ],
-  "references": [
-    { "path": "../package/bun-otel" },
-    { "path": "../examples/bun-server" }
-  ]
+  "exclude": ["**/node_modules", "**/dist", "**/lib"],
+  "references": [{ "path": "../package/bun-otel" }, { "path": "../examples/bun-server" }]
 }

@@ -40,7 +40,7 @@ const server = Bun.serve({
           error: "Internal Server Error",
           message: (error as Error).message,
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
   },

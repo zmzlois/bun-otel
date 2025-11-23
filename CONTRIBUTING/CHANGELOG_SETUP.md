@@ -5,12 +5,14 @@ This project is now configured with automated changelog generation and npm publi
 ## ✅ What's Configured
 
 ### 1. **Changelogen** - Automatic Changelog Generation
+
 - Installed as dev dependency
 - Configured in `.changelogrc` with emoji support
 - Parses conventional commits automatically
 - Generates beautiful, categorized changelogs
 
 ### 2. **Automated Release Workflow** (.github/workflows/release.yml)
+
 - Manual trigger via GitHub Actions
 - Automatically determines version bump from commits
 - Updates package.json, CHANGELOG.md
@@ -18,13 +20,15 @@ This project is now configured with automated changelog generation and npm publi
 - Supports dry-run mode for previewing
 
 ### 3. **Automated Publish Workflow** (.github/workflows/publish.yml)
-- Triggers on tag push (v*.*.*)
+
+- Triggers on tag push (v*.*.\*)
 - Only publishes from main branch (security)
 - Publishes to npm with provenance (no token needed!)
 - Generates release notes with changelogen
 - Creates GitHub releases automatically
 
 ### 4. **CI Workflow** (.github/workflows/ci.yml)
+
 - Runs on PRs and main branch pushes
 - Linting, formatting, type checking
 - Build verification
@@ -71,7 +75,7 @@ Use conventional commits:
 
 ```bash
 feat: add new feature       # Minor bump
-fix: resolve bug            # Patch bump  
+fix: resolve bug            # Patch bump
 feat!: breaking change      # Major bump
 docs: update README         # No bump
 ```
@@ -89,7 +93,7 @@ docs: update README         # No bump
 ✅ No npm tokens to manage  
 ✅ Secure, automated publishing  
 ✅ Beautiful, consistent changelogs  
-✅ Full audit trail via GitHub  
+✅ Full audit trail via GitHub
 
 ---
 

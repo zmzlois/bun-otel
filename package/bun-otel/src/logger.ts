@@ -37,10 +37,7 @@ export class Logger {
 
     // Start flush interval
     if (this.ddApiKey) {
-      this.flushInterval = setInterval(
-        () => this.flush(),
-        this.flushIntervalMs,
-      );
+      this.flushInterval = setInterval(() => this.flush(), this.flushIntervalMs);
     }
   }
 
@@ -82,34 +79,26 @@ export class Logger {
       return;
     }
 
-    const isDev =
-      this.environment === "development" || this.environment === "local";
+    const isDev = this.environment === "development" || this.environment === "local";
 
     if (isDev) {
       debug.log(`\n📤 Sending ${logs.length} logs to Datadog...`);
-      debug.log(
-        `   Endpoint: https://http-intake.logs.${this.ddSite}/api/v2/logs`,
-      );
+      debug.log(`   Endpoint: https://http-intake.logs.${this.ddSite}/api/v2/logs`);
       debug.log(`   Sample log:`, JSON.stringify(logs[0], null, 2));
     }
 
     try {
-      const response = await fetch(
-        `https://http-intake.logs.${this.ddSite}/api/v2/logs`,
-        {
-          method: "POST",
-          headers: {
-            "DD-API-KEY": this.ddApiKey,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(logs),
+      const response = await fetch(`https://http-intake.logs.${this.ddSite}/api/v2/logs`, {
+        method: "POST",
+        headers: {
+          "DD-API-KEY": this.ddApiKey,
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(logs),
+      });
 
       if (response.status !== 202 && response.status !== 200) {
-        debug.error(
-          `❌ Failed to send logs to Datadog: HTTP ${response.status}`,
-        );
+        debug.error(`❌ Failed to send logs to Datadog: HTTP ${response.status}`);
         const body = await response.text();
         debug.error(`   Response:`, body);
       } else if (isDev) {
@@ -137,11 +126,7 @@ export class Logger {
   /**
    * Core logging function
    */
-  private log(
-    level: LogLevel,
-    message: string,
-    attributes?: LogAttributes,
-  ): void {
+  private log(level: LogLevel, message: string, attributes?: LogAttributes): void {
     const traceContext = this.getTraceContext();
     const timestamp = Date.now();
 
@@ -189,8 +174,7 @@ export class Logger {
       ? `[trace:${traceContext.trace_id.toString().substring(0, 8)}][span:${traceContext.span_id.toString().substring(0, 8)}]`
       : "";
     const logMessage = `[${level.toUpperCase()}]${prefix} ${message}`;
-    const logFn =
-      level === "error" || level === "fatal" ? console.error : console.log;
+    const logFn = level === "error" || level === "fatal" ? console.error : console.log;
 
     if (this.environment === "development" || this.environment === "local") {
       logFn(logMessage, attributes || "");
@@ -272,11 +256,7 @@ export class Logger {
     const childLogger = new Logger();
     const originalLog = childLogger.log.bind(childLogger);
 
-    childLogger.log = (
-      level: LogLevel,
-      message: string,
-      attrs?: LogAttributes,
-    ) => {
+    childLogger.log = (level: LogLevel, message: string, attrs?: LogAttributes) => {
       originalLog(level, message, { ...defaultAttributes, ...attrs });
     };
 

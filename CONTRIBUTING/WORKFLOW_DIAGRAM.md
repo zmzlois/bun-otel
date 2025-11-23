@@ -118,6 +118,7 @@ Trigger: Push or Pull Request
 ```
 
 **Key Features:**
+
 - Runs on every push/PR
 - Fast feedback (parallel jobs)
 - Catches issues before merge
@@ -170,6 +171,7 @@ Manual Trigger (GitHub UI)
 ```
 
 **Key Features:**
+
 - Manual control over releases
 - Dry-run mode for preview
 - Automatic version detection
@@ -218,6 +220,7 @@ Triggered by: Tag push (v*.*.*)
 ```
 
 **Key Features:**
+
 - Automatic (triggered by tags)
 - npm provenance (secure)
 - Only from main branch
@@ -229,6 +232,7 @@ Triggered by: Tag push (v*.*.*)
 ## 🔐 Security Features
 
 ### Branch Protection
+
 ```
 ┌─────────────────────────────────────┐
 │  publish.yml                        │
@@ -244,11 +248,13 @@ Triggered by: Tag push (v*.*.*)
 **Why?** Prevents accidental publishing from feature branches.
 
 ### npm Provenance
+
 ```
 npm publish --provenance
 ```
 
 **What it does:**
+
 - Cryptographic proof of source
 - Links package to GitHub repo
 - Shows build environment
@@ -300,17 +306,17 @@ release.yml runs → Shows preview → No changes made
 
 ## ⚙️ Workflow Comparison
 
-| Feature | CI | Release | Publish |
-|---------|----|---------| --------|
-| **Trigger** | Auto (push/PR) | Manual | Auto (tag) |
-| **Purpose** | Quality checks | Versioning | Distribution |
-| **Builds** | ✅ | ✅ | ✅ |
-| **Tests** | ✅ | ✅ | ❌ |
-| **Version Bump** | ❌ | ✅ | ❌ |
-| **Creates Tag** | ❌ | ✅ | ❌ |
-| **Publishes npm** | ❌ | ❌ | ✅ |
-| **GitHub Release** | ❌ | ❌ | ✅ |
-| **Runs on** | Any branch | Main | Tag from main |
+| Feature            | CI             | Release    | Publish       |
+| ------------------ | -------------- | ---------- | ------------- |
+| **Trigger**        | Auto (push/PR) | Manual     | Auto (tag)    |
+| **Purpose**        | Quality checks | Versioning | Distribution  |
+| **Builds**         | ✅             | ✅         | ✅            |
+| **Tests**          | ✅             | ✅         | ❌            |
+| **Version Bump**   | ❌             | ✅         | ❌            |
+| **Creates Tag**    | ❌             | ✅         | ❌            |
+| **Publishes npm**  | ❌             | ❌         | ✅            |
+| **GitHub Release** | ❌             | ❌         | ✅            |
+| **Runs on**        | Any branch     | Main       | Tag from main |
 
 ---
 
@@ -332,12 +338,14 @@ git push origin v0.0.2  # After release.yml creates tag
 ## 🤔 Why Three Workflows?
 
 ### Single Workflow (❌ Not Recommended)
+
 ```
 One workflow: Check → Version → Tag → Publish
 Problem: No flexibility, no preview, all-or-nothing
 ```
 
 ### Two Workflows (✅ Our Approach)
+
 ```
 CI:      Check quality (runs often)
 Release: Prepare version (runs when needed)

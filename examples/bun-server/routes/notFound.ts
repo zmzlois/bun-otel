@@ -4,6 +4,6 @@ export function handle404(pathname: string): Response {
       error: "Not Found",
       path: pathname,
     },
-    { status: 404 },
+    { status: 404 }
   );
 }

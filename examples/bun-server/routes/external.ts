@@ -15,7 +15,7 @@ export async function handleExternalCall(): Promise<Response> {
         error: "Failed to call external API",
         message: (error as Error).message,
       },
-      { status: 502 },
+      { status: 502 }
     );
   }
 }

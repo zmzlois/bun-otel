@@ -1,13 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "exclude": [
-    "**/node_modules",
-    "**/dist",
-    "**/lib",
-    "**/.turbo",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ],
+  "exclude": ["**/node_modules", "**/dist", "**/lib", "**/.turbo", "**/*.test.ts", "**/*.spec.ts"],
   "compilerOptions": {
     // Project structure
     "composite": true,
