@@ -1,25 +1,25 @@
 {
-  "name": "bun-otel",
-  "module": "index.ts",
+  "name": "bun-otel-workspace",
+  "description": "Monorepo for OpenTelemetry instrumentation in Bun runtime.",
+  "module": "packages/index.ts",
   "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest",
-    "bun-types": "latest",
-    "@opentelemetry/api": "latest",
-    "@opentelemetry/sdk-node": "latest",
-    "@opentelemetry/sdk-trace-node": "latest",
-    "@opentelemetry/exporter-otlp-http": "latest",
-    "@opentelemetry/sdk-metrics": "latest",
-    "@opentelemetry/auto-instrumentations-node": "latest",
-    "@opentelemetry/exporter-trace-otlp-proto": "latest",
-    "@opentelemetry/semantic-conventions": "latest"
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "build": "bun run --filter 'packages/*' build",
+    "test": "bun test",
+    "lint": "bun run --filter '*' lint",
+    "bun-server": "bun run --filter bun-server dev",
+    "elysia": "bun run --filter elysia dev",
+    "setup": "bun run setup.ts"
   },
-  "author": {
-    "name": "zmzlois",
-    "email": "lois@normal-people.com",
-    "url": "https://normal-people.com"
+  "devDependencies": {
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "workspaces": [
+    "package/*",
+    "examples/*"
+  ]
 }
