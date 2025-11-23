@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "bun-otel": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.6"
   }
 }

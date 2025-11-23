@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run lint-staged
+bunx lint-staged
+
+# Run typecheck
+echo "🔍 Running typecheck..."
+bun run typecheck
+
+# Run tests
+echo "🧪 Running tests..."
+cd package/bun-otel && bun test && cd ../..
+
+echo "✅ All pre-commit checks passed!"

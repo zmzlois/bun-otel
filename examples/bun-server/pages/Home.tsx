@@ -1,3 +1,5 @@
+import React from "react";
+
 export function Home() {
   return (
     <html>
@@ -8,55 +10,55 @@ export function Home() {
             body {
               font-family: system-ui;
               max-width: 800px;
-              margin: 50px auto;
-              padding: 20px;
+              margin: 2rem auto;
+              padding: 0 1rem;
             }
-            h1 {
-              color: #333;
+            h1 { color: #333; }
+            .card {
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              padding: 1.5rem;
+              margin: 1rem 0;
+              background: #f9f9f9;
             }
             .endpoint {
-              background: #f5f5f5;
-              padding: 15px;
-              margin: 10px 0;
-              border-radius: 5px;
-            }
-            code {
-              background: #e0e0e0;
-              padding: 2px 6px;
-              border-radius: 3px;
+              background: #fff;
+              padding: 0.75rem;
+              margin: 0.5rem 0;
+              border-left: 3px solid #4CAF50;
             }
           `}
         </style>
       </head>
       <body>
-        <h1>🚀 Bun Server Example</h1>
-        <p>A simple Bun HTTP server</p>
+        <h1>🥟 Bun Server with OpenTelemetry</h1>
+        <div className="card">
+          <h2>Available Endpoints</h2>
+          <p>This server is instrumented with OpenTelemetry for distributed tracing.</p>
 
-        <h2>Available Endpoints:</h2>
+          <div className="endpoint">
+            <strong>GET /</strong> - This page
+          </div>
 
-        <div className="endpoint">
-          <h3>GET /api/users</h3>
-          <p>Returns a list of users with simulated database query</p>
-        </div>
+          <div className="endpoint">
+            <strong>GET /health</strong> - Health check endpoint
+          </div>
 
-        <div className="endpoint">
-          <h3>GET /api/external</h3>
-          <p>Makes an external API call</p>
-        </div>
+          <div className="endpoint">
+            <strong>GET /slow</strong> - Slow endpoint (simulates processing)
+          </div>
 
-        <div className="endpoint">
-          <h3>GET /api/error</h3>
-          <p>Triggers an error for testing</p>
-        </div>
+          <div className="endpoint">
+            <strong>GET /users</strong> - Fetch users from mock API
+          </div>
 
-        <div className="endpoint">
-          <h3>GET /api/slow</h3>
-          <p>Simulates a slow request</p>
-        </div>
+          <div className="endpoint">
+            <strong>GET /error</strong> - Trigger an error (for testing)
+          </div>
 
-        <div className="endpoint">
-          <h3>GET /health</h3>
-          <p>Health check endpoint</p>
+          <div className="endpoint">
+            <strong>GET /external</strong> - Make external API call
+          </div>
         </div>
       </body>
     </html>

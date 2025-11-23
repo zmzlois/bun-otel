@@ -15,7 +15,21 @@
     "typecheck": "tsc --build config/tsconfig.json",
     "check": "bun run typecheck && bun run lint && bun run format:check",
     "bun-server": "bun run --filter bun-server dev",
-    "elysia": "bun run --filter elysia dev"
+    "elysia": "bun run --filter elysia dev",
+    "changelog": "changelogen --output CHANGELOG.md",
+    "changelog:preview": "changelogen",
+    "changelog:bump": "changelogen --bump",
+    "release": "changelogen --release",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write --config config/.prettierrc.json",
+      "eslint --fix -c config/eslint.config.js"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write --config config/.prettierrc.json"
+    ]
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
@@ -23,6 +37,8 @@
     "@types/eslint__js": "^8.42.3",
     "changelogen": "^0.6.2",
     "eslint": "^9.15.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.3.3",
     "typescript-eslint": "^8.14.0"
   },
