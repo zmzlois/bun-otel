@@ -85,15 +85,41 @@ await new Promise<void>((resolve, reject) => {
 });
 
 // Copy README.md and package.json to dist
-console.log("📄 Copying README.md and package.json...");
+console.log("📄 Copying README.md and preparing package.json...");
 try {
   if (existsSync("../README.md")) {
     copyFileSync("../README.md", "./dist/README.md");
     console.log("✅ README.md copied");
   }
+
+  // Read and modify package.json for dist publishing
   if (existsSync("./package.json")) {
-    copyFileSync("./package.json", "./dist/package.json");
-    console.log("✅ package.json copied");
+    const pkg = JSON.parse(await Bun.file("./package.json").text());
+
+    // Update paths to remove dist/ prefix since we're publishing from dist
+    pkg.main = "./index.cjs";
+    pkg.module = "./index.js";
+    pkg.types = "./index.d.ts";
+
+    if (pkg.exports) {
+      pkg.exports["."] = {
+        import: {
+          types: "./index.d.ts",
+          default: "./index.js",
+        },
+        require: {
+          types: "./index.d.ts",
+          default: "./index.cjs",
+        },
+      };
+    }
+
+    // Update files array to include root-level files
+    pkg.files = ["*.js", "*.cjs", "*.d.ts", "*.map", "README.md"];
+
+    // Write modified package.json to dist
+    await Bun.write("./dist/package.json", JSON.stringify(pkg, null, 2));
+    console.log("✅ package.json prepared for publishing");
   }
 } catch (err) {
   console.error("⚠️  Failed to copy files:", err);
