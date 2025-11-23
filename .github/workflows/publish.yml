@@ -11,10 +11,6 @@ on:
         required: true
         type: string
 
-permissions:
-  id-token: write # Required for OIDC
-  contents: read
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -22,7 +18,7 @@ jobs:
     if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
-      id-token: write # Required for npm provenance
+      id-token: write # Required for npm provenance and OIDC
 
     steps:
       - name: Checkout code
@@ -68,11 +64,11 @@ jobs:
         run: bun run build
         working-directory: ./package/bun-otel
 
-      - name: Setup Node.js (for npm publish)
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          registry-url: "https://registry.npmjs.org"
+          # registry-url: "https://registry.npmjs.org"
 
       - name: Verify package contents
         run: |
@@ -86,9 +82,10 @@ jobs:
           cat package.json | jq '{name, version, main, module, files}'
         working-directory: ./package/bun-otel
 
-      - name: Publish to npm
+      - name: Publish to npm with trusted publishing
         run: npm publish --access public --provenance
         working-directory: ./package/bun-otel
+        # No NODE_AUTH_TOKEN needed - uses OIDC automatically!
 
       - name: Get package version
         id: package-version
