@@ -5,7 +5,7 @@ import { spawn } from "child_process";
 const distDir = "./dist";
 
 // Clean dist directory
-console.log("🧹 Cleaning dist directory...");
+console.log("Cleaning dist directory...");
 if (existsSync(distDir)) {
   rmSync(distDir, { recursive: true });
 }
