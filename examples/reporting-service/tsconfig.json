@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../config/tsconfig.base.json",
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "composite": true,
+    "noEmit": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "paths": {
+      "bun-otel": ["../../package/bun-otel/index.ts"],
+      "bun-otel/*": ["../../package/bun-otel/*"]
+    }
+  },
+  "references": [{ "path": "../../package/bun-otel" }]
+}

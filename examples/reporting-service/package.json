@@ -1,0 +1,14 @@
+{
+  "name": "reporting-service",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run index.ts",
+    "lint": "eslint . -c ../../config/eslint.config.js --max-warnings 0",
+    "lint:fix": "eslint . -c ../../config/eslint.config.js --fix",
+    "format": "prettier --write . --config ../../config/.prettierrc.json",
+    "format:check": "prettier --check . --config ../../config/.prettierrc.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {}
+}
