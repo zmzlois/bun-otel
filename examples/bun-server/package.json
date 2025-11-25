@@ -10,10 +10,5 @@
     "format:check": "prettier --check . --config ../../config/.prettierrc.json",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "bun-otel": "workspace:*"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.6"
-  }
+  "dependencies": {}
 }

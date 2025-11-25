@@ -11,8 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "elysia": "latest",
-    "bun-otel": "workspace:*"
+    "elysia": "latest"
   },
   "module": "src/index.js"
 }
