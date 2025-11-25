@@ -15,6 +15,7 @@
     "typecheck": "tsc --build config/tsconfig.json",
     "check": "bun run typecheck && bun run lint && bun run format:check",
     "bun-server": "bun run --filter bun-server dev",
+    "reporting-service": "bun run --filter reporting-service dev",
     "elysia": "bun run --filter elysia dev",
     "changelog": "changelogen --output CHANGELOG.md",
     "changelog:preview": "changelogen",

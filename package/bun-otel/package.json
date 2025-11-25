@@ -48,7 +48,8 @@
     "@opentelemetry/exporter-trace-otlp-proto": "latest",
     "@opentelemetry/semantic-conventions": "latest",
     "@opentelemetry/instrumentation-redis": "latest",
-    "@opentelemetry/resources": "latest"
+    "@opentelemetry/resources": "latest",
+    "@opentelemetry/sdk-trace-base": "latest"
   },
   "author": {
     "name": "zmzlois",
