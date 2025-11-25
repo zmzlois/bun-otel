@@ -131,6 +131,9 @@ export class OpenTelemetryClient {
     }
 
     try {
+      // Determine runtime specifics
+      const isBunRuntime = typeof globalThis !== "undefined" && "Bun" in globalThis;
+
       // Configure trace exporter
       const traceExporter = useJaeger
         ? new OTLPTraceExporter({
@@ -174,12 +177,15 @@ export class OpenTelemetryClient {
       this.sdk = new NodeSDK({
         resource,
         traceExporter,
-        metricReader,
+        metricReaders: [metricReader],
         instrumentations: [
           getNodeAutoInstrumentations({
             // Disable instrumentations that don't work well with Bun
             "@opentelemetry/instrumentation-fs": {
               enabled: false,
+            },
+            "@opentelemetry/instrumentation-runtime-node": {
+              enabled: !isBunRuntime,
             },
             // Enable specific instrumentations
             "@opentelemetry/instrumentation-http": {
