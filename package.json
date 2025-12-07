@@ -49,5 +49,8 @@
   "workspaces": [
     "package/*",
     "examples/*"
-  ]
+  ],
+  "overrides": {
+    "elysia": "^1.4.18"
+  }
 }
