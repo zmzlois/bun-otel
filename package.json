@@ -47,8 +47,10 @@
     "typescript": "^5.0.0"
   },
   "workspaces": [
-    "package/*",
-    "examples/*"
+    "package/**",
+    "examples/elysia/**",
+    "examples/bun-server/**",
+    "examples/reporting-service/**"
   ],
   "overrides": {
     "elysia": "^1.4.18"
